@@ -1,19 +1,28 @@
-Untitled
+Problem Set 1
 ================
 
-# This is a section
+# Question 1
 
-This is some text that is going to exist in the section. This is going
-to be replaced with an output. Don't do something dumb. 
+In this question, we’re asking you to hand-build some data. Create a
+`data.frame` that has 30 rows and two columns. In the first column,
+create an ID that covers each of the rows, iterating by 3. In the second
+column, create a random draw from the normal distribution that has a
+mean that is the value in the column just to the left of it.
 
 ``` r
-x <- 1:10
-y <- 10:1
-
-plot(x, y, pch = 19, main = 'A dumb plot')
+d <- data.frame(
+  id = seq(from = 1, by = 3, length.out = 30)
+)
+d$var <- rnorm(n = 30, mean = d$id, sd = 5)
 ```
 
-![](ps_1_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+We can actually plot this to show that things are, generally working.
 
-And this is some more inline evaluation. The average of the `x-variable`
-is 5.5.
+``` r
+with(d, plot(x = id, y = var, 
+             main = "A simple plot",
+             pch = 19)
+     )
+```
+
+![](ps_1_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
